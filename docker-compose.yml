@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:15 # Use a specific version of PostgreSQL
+    container_name: roguelike-db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: myroguelikedb
+    ports:
+      - '5432:5432' # Map your local port 5432 to the container's port 5432
+    volumes:
+      - ./prisma/data:/var/lib/postgresql/data # IMPORTANT: This saves your data!
